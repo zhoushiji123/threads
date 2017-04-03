@@ -24,23 +24,23 @@ public class Store {
     }
 
     public  void add(String str){
-        synchronized (this){
+        synchronized (queue){
             System.out.println("生产者进入仓库--生产了:"+str);
             queue.offer(str);
-            this.notifyAll(); //有商品了 唤醒消费者
+            queue.notify(); //有商品了 唤醒一个消费者
         }
 
     }
 
     public  String get(){
 
-        synchronized (this){
+        synchronized (queue){
 
             System.out.println(Thread.currentThread().getName()+"线程进入仓库");
 
             try {
                 if(queue.size() ==0 )  //没有商品 该消费者阻塞
-                    this.wait();
+                    queue.wait();
 
             }catch (InterruptedException e){
                 e.printStackTrace();

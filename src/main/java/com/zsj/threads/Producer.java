@@ -18,7 +18,7 @@ public class Producer implements Runnable {
     public void run() {
         while (true){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 String s = "商品"+i+"号";
                 Store.getInstance().add(s);
                 i++;

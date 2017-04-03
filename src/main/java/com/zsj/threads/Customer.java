@@ -17,7 +17,7 @@ public class Customer implements Runnable {
     public void run() {
         while (true){
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 String s = Store.getInstance().get();
                 System.out.println("线程-"+name+" 获得了商品: "+s);
 
